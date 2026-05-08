@@ -105,7 +105,7 @@ export default function Home() {
           <div className="absolute z-10 inset-0 bg-linear-to-b from-black/60 via-transparent to-black/50" />
 
           {/* Hero Content Container */}
-          <div className="relative z-20 mx-auto h-full max-w-7xl px-8 lg:px-12 flex flex-col">
+          <div className="relative z-20 mx-auto h-full max-w-7xl px-4 sm px-4:sm:px-8 lg:px-12 flex flex-col">
             {/* Top Left: Ratings */}
             <div className="pt-44 lg:pt-40">
               <div className="flex items-center gap-4 text-white">
@@ -173,7 +173,7 @@ export default function Home() {
                       Find your next <br /> treasure here
                     </h4>
                     <Link
-                      href="/marketplace"
+                      href="/#"
                       className="mt-1 text-[10px] font-black text-[#1d4b00] underline underline-offset-4 hover:opacity-60 transition-opacity uppercase tracking-wider"
                     >
                       Start Exploring
@@ -186,7 +186,7 @@ export default function Home() {
         </section>
 
         {/* Categories Section */}
-        <section className="mx-auto max-w-7xl px-8 lg:px-12 py-14 sm:py-16">
+        <section className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 py-14 sm:py-16">
           <div className="mb-12 flex items-center justify-between">
             <div>
               <h2 className="text-3xl md:text-2xl font-black tracking-tight text-primary font-montserrat uppercase">
@@ -339,7 +339,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
               {/* Main Card: Direct Sales Excellence */}
-              <div className="lg:col-span-2 rounded-md bg-zinc-50/50 border border-zinc-200 p-10 flex flex-col">
+              <div className="lg:col-span-2 rounded-md bg-zinc-50/50 border border-zinc-200 px-5 py-8 sm:p-10 flex flex-col">
                 <div className="mb-6">
                   <span className="inline-block px-3 py-1 rounded-full bg-[#128a12] text-[10px] font-black text-white uppercase tracking-widest mb-4">
                     100% Verified
@@ -364,7 +364,7 @@ export default function Home() {
               </div>
 
               {/* Dark Card: Quality Assurance */}
-              <div className="rounded-md bg-[#000913] p-10 flex flex-col text-white">
+              <div className="rounded-md bg-[#000913] px-5 py-8 flex flex-col text-white">
                 <div className="mb-8">
                   <div className="h-10 w-10 rounded-lg bg-[#b5e941]/10 flex items-center justify-center text-[#b5e941] mb-4 border border-[#b5e941]/20">
                     <ShieldCheck size={24} />
@@ -391,7 +391,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Identity Shield */}
-              <div className="rounded-md border border-zinc-200 p-8 transition-shadow">
+              <div className="rounded-md border border-zinc-200 px-5 py-8 transition-shadow">
                 <div className="text-[#b5e941] mb-6">
                   <ShieldCheck size={24} />
                 </div>
@@ -405,7 +405,7 @@ export default function Home() {
               </div>
 
               {/* Concierge Support */}
-              <div className="rounded-md border border-zinc-200 p-8 transition-shadow">
+              <div className="rounded-md border border-zinc-200 px-5 py-8 transition-shadow">
                 <div className="text-[#b5e941] mb-6">
                   <Timer size={24} />
                 </div>
@@ -435,130 +435,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-border bg-white px-8 pt-24 pb-10">
-        <div className="mx-auto grid max-w-7xl gap-16 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="col-span-1 lg:col-span-1">
-            <div className="mb-8 flex items-center gap-2">
-              <span className="text-2xl font-black tracking-tighter text-primary font-serif">
-                K.
-              </span>
-              <span className="text-xl font-bold tracking-tight text-primary font-serif">
-                Kleinanzeigenportal
-              </span>
-            </div>
-            <p className="text-sm font-medium text-muted leading-relaxed">
-              The premier destination for buying and selling high-quality
-              pre-owned items. Experience the future of classifieds.
-            </p>
-          </div>
-          <div>
-            <h4 className="mb-8 text-[11px] font-black text-primary uppercase tracking-[0.2em] font-montserrat">
-              {/* Platform */}
-            </h4>
-            <ul className="space-y-5 text-sm font-bold text-muted">
-              {/* <li>
-                <Link href="/" className="hover:text-primary transition-colors">
-                  Marketplace
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-primary transition-colors">
-                  Post an Ad
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-primary transition-colors">
-                  Categories
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-primary transition-colors">
-                  Locations
-                </Link>
-              </li> */}
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-8 text-[11px] font-black text-primary uppercase tracking-[0.2em] font-montserrat">
-              Company
-            </h4>
-            <ul className="space-y-5 text-sm font-bold text-muted">
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-primary transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faqs"
-                  className="hover:text-primary transition-colors"
-                >
-                  Faq
-                </Link>
-              </li>
-              {/* <li>
-                <Link href="#" className="hover:text-primary transition-colors">
-                  Blog
-                </Link>
-              </li> */}
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-primary transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-8 text-[11px] font-black text-primary uppercase tracking-[0.2em] font-montserrat">
-              Support
-            </h4>
-            <ul className="space-y-5 text-sm font-bold text-muted">
-              <li>
-                <Link
-                  href="/faqs"
-                  className="hover:text-primary transition-colors"
-                >
-                  Help Center
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/legals"
-                  className="hover:text-primary transition-colors"
-                >
-                  Safety Rules
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/legals"
-                  className="hover:text-primary transition-colors"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/legals"
-                  className="hover:text-primary transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="mx-auto mt-12 max-w-7xl border-t border-border pt-12 text-center text-[11px] font-medium uppercase tracking-[0.2em] text-muted/40">
-          © 2026 Kleinanzeigenportal GmbH. All rights reserved.
-        </div>
-      </footer>
     </div>
   );
 }

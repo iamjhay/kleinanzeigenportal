@@ -64,96 +64,103 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-        scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-border/50 shadow-sm py-0"
-          : isHome
-            ? "bg-transparent border-none py-2"
-            : "bg-white border-b border-border/50 py-0"
-      }`}
-    >
-      <div
-        className={`mx-auto flex max-w-7xl items-center justify-between p-4 sm:px-8 lg:px-12 transition-all duration-500 ${
-          scrolled ? "h-16" : "h-20"
-        }`}
-      >
-        {/* Left: Categories (Desktop Only) */}
-        <div className="hidden lg:flex items-center gap-10">
-          {categories.map((cat) => (
-            <Link
-              key={cat.name}
-              href={cat.href}
-              className={`text-[13px] font-bold tracking-tight transition-colors ${
-                scrolled || !isHome
-                  ? "text-muted hover:text-primary"
-                  : "text-white/80 hover:text-white"
-              }`}
-            >
-              {cat.name}
-            </Link>
-          ))}
-        </div>
+    <>
+      <nav className="fixed top-0 z-50 w-full">
+        {/* Navbar Background Layer - Handles blur and color transitions independently */}
+        <div
+          className={`absolute inset-0 transition-all duration-500 -z-10 ${
+            isMobileMenuOpen
+              ? "bg-white opacity-0" // Hide during mobile menu to prevent blur interference
+              : scrolled
+                ? "bg-white/80 backdrop-blur-xl border-b border-border/50 shadow-sm py-0"
+                : isHome
+                  ? "bg-transparent border-none"
+                  : "bg-white border-b border-border/50"
+          }`}
+        />
 
-        {/* Center: Logo */}
-        <div className="text-center">
-          <Link
-            href="/"
-            className={`text-2xl md:text-3xl font-extrabold tracking-tighter font-serif transition-colors ${
-              scrolled || !isHome ? "text-primary" : "text-white"
-            }`}
-          >
-            KleinanzeigenPortal
-          </Link>
-        </div>
-
-        {/* Right Actions */}
-        <div className="flex items-center gap-8 lg:gap-10">
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between p-4 sm:px-8 lg:px-12 transition-all duration-500 ${
+            scrolled ? "h-16" : "h-20"
+          }`}
+        >
+          {/* Left: Categories (Desktop Only) */}
           <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
+            {categories.map((cat) => (
               <Link
-                key={link.name}
-                href={link.href}
+                key={cat.name}
+                href={cat.href}
                 className={`text-[13px] font-bold tracking-tight transition-colors ${
                   scrolled || !isHome
                     ? "text-muted hover:text-primary"
                     : "text-white/80 hover:text-white"
                 }`}
               >
-                {link.name}
+                {cat.name}
               </Link>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-6">
-            <Link href="/contact">
-              <button
-                className={`rounded-full px-8 py-3 text-sm font-bold shadow-xl transition-all active:scale-95 ${
-                  scrolled || !isHome
-                    ? "bg-primary text-white hover:opacity-90"
-                    : "bg-white text-primary hover:bg-gray-100"
-                }`}
-              >
-                Contact Us
-              </button>
+          {/* Center: Logo */}
+          <div className="text-center">
+            <Link
+              href="/"
+              className={`text-2xl md:text-3xl font-extrabold tracking-tighter font-serif transition-colors ${
+                scrolled || !isHome ? "text-primary" : "text-white"
+              }`}
+            >
+              KleinanzeigenPortal
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`flex h-10 w-10 items-center justify-center rounded-lg lg:hidden transition-colors ${
-              scrolled || !isHome ? "text-primary" : "text-white"
-            }`}
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu size={28} />
-          </button>
-        </div>
-      </div>
+          {/* Right Actions */}
+          <div className="flex items-center gap-8 lg:gap-10">
+            <div className="hidden lg:flex items-center gap-10">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-[13px] font-bold tracking-tight transition-colors ${
+                    scrolled || !isHome
+                      ? "text-muted hover:text-primary"
+                      : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
 
-      {/* Mobile Menu - RESTORED TO ORIGINAL STATE */}
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="/contact">
+                <button
+                  className={`rounded-full px-8 py-3 text-sm font-bold shadow-xl transition-all active:scale-95 ${
+                    scrolled || !isHome
+                      ? "bg-primary text-white hover:opacity-90"
+                      : "bg-white text-primary hover:bg-gray-100"
+                  }`}
+                >
+                  Contact Us
+                </button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className={`flex h-10 w-10 items-center justify-center rounded-lg lg:hidden transition-colors ${
+                scrolled || !isHome ? "text-primary" : "text-white"
+              }`}
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu size={28} />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu - Moved outside of the nav background logic for a glitch-free experience */}
       <div
-        className={`fixed inset-0 z-60 transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 z-[100] transition-all duration-500 lg:hidden ${
           isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
@@ -164,11 +171,11 @@ export default function Navbar() {
           onClick={() => setIsMobileMenuOpen(false)}
         />
         <div
-          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white p-5 shadow-2xl transition-transform duration-500 ease-in-out flex flex-col ${
+          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-500 ease-in-out flex flex-col z-[110] ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center justify-between p-6 mb-4 border-b border-border/10">
             <span className="text-2xl font-bold font-serif text-primary">
               Menu
             </span>
@@ -180,7 +187,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 px-6">
             {mobileNavLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -204,7 +211,7 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="mt-auto flex flex-col gap-8">
+          <div className="mt-auto flex flex-col gap-8 p-6">
             <Link href="/contact" className="w-full">
               <button className="w-full rounded-sm bg-primary py-3.5 text-base font-bold text-white shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all active:scale-[0.98]">
                 Contact Us
@@ -213,6 +220,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }

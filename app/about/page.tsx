@@ -67,7 +67,7 @@ export default function AboutPage() {
       {/* Values Grid */}
       <section className="py-24 bg-zinc-50 border-t border-border/50">
         <div className="mx-auto max-w-7xl px-8">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {/* Authenticity */}
             <div className="group rounded-xl bg-white p-6 shadow-sm border border-border hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
               <div className="mb-4 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary transition-transform group-hover:scale-110">
@@ -129,29 +129,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Outro Section */}
-      <section className="mx-auto max-w-7xl px-8 py-32 text-center">
-        <div className="inline-block mb-8 h-1 w-24 bg-secondary rounded-full"></div>
-        <h2 className="mb-10 text-3xl lg:text-5xl font-bold text-primary font-serif italic tracking-tight">
-          &ldquo;Luxury you can trust. Value you can own.&quot;
-        </h2>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <Link
-            href="/"
-            className="flex items-center gap-3 rounded-full bg-[#000913] px-10 py-5 text-sm font-black uppercase tracking-[0.2em] text-white shadow-2xl hover:bg-primary transition-all active:scale-95"
-          >
-            Explore Marketplace
-            <ArrowRight size={18} />
-          </Link>
-          <Link
-            href="/contact"
-            className="flex items-center gap-3 rounded-full border-2 border-border px-10 py-5 text-sm font-black uppercase tracking-[0.2em] text-primary hover:bg-zinc-50 transition-all active:scale-95"
-          >
-            Contact Concierge
-          </Link>
         </div>
       </section>
     </div>
