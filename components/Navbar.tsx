@@ -10,6 +10,7 @@ export default function Navbar() {
   const locale = useLocale();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -35,6 +36,11 @@ export default function Navbar() {
   const toggleLanguage = () => {
     const nextLocale = locale === "en" ? "de" : "en";
     router.replace(pathname, { locale: nextLocale, scroll: false });
+  };
+
+  const switchLocale = (nextLocale: string) => {
+    router.replace(pathname, { locale: nextLocale, scroll: false });
+    setIsMobileLangOpen(false);
   };
 
   // Handle scroll event
@@ -188,15 +194,64 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className={`flex h-10 w-10 items-center justify-center rounded-lg lg:hidden transition-colors ${
-                scrolled || !isHome ? "text-primary" : "text-white"
-              }`}
-              onClick={() => setIsMobileMenuOpen(true)}
-            >
-              <Menu size={28} />
-            </button>
+            {/* Mobile Actions: Language + Menu */}
+            <div className="flex items-center gap-2 lg:hidden">
+              {/* Mobile Language Switcher */}
+              <div className="relative">
+                <button
+                  className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
+                    scrolled || !isHome ? "text-primary" : "text-white"
+                  }`}
+                  onClick={() => setIsMobileLangOpen(!isMobileLangOpen)}
+                >
+                  <Globe size={24} />
+                </button>
+
+                {/* Language Dropdown */}
+                {isMobileLangOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-100"
+                      onClick={() => setIsMobileLangOpen(false)}
+                    />
+                    <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-2xl border border-border/10 overflow-hidden z-110 flex flex-col p-2">
+                      <button
+                        onClick={() => switchLocale("en")}
+                        className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold transition-all active:scale-95 ${
+                          locale === "en"
+                            ? "bg-primary/10 text-primary"
+                            : "text-muted hover:bg-primary/5 hover:text-primary"
+                        }`}
+                      >
+                        <span className="text-xl leading-none">🇺🇸</span>
+                        <span>English</span>
+                      </button>
+                      <button
+                        onClick={() => switchLocale("de")}
+                        className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-bold transition-all active:scale-95 ${
+                          locale === "de"
+                            ? "bg-primary/10 text-primary"
+                            : "text-muted hover:bg-primary/5 hover:text-primary"
+                        }`}
+                      >
+                        <span className="text-xl leading-none">🇩🇪</span>
+                        <span>Deutsch</span>
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
+                  scrolled || !isHome ? "text-primary" : "text-white"
+                }`}
+                onClick={() => setIsMobileMenuOpen(true)}
+              >
+                <Menu size={28} />
+              </button>
+            </div>
           </div>
         </div>
       </nav>
