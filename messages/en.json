@@ -1,0 +1,202 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "marketplace": "Marketplace",
+    "vehicles": "Vehicles",
+    "realEstate": "Real Estate",
+    "about": "About Us",
+    "faqs": "FAQs",
+    "terms": "Terms",
+    "legalPolicies": "Legal Policies",
+    "contact": "Contact",
+    "contactUs": "Contact Us",
+    "sell": "Sell Now"
+  },
+  "Hero": {
+    "tagline": "Premium Marketplace",
+    "title": "Your luxury \nlifestyle with \nZufriedene Verkäufe",
+    "description": "At Zufriedene Verkäufe, we provide a curated marketplace for high-end assets, professionally verified for your absolute peace of mind.",
+    "cta": "Explore Marketplace",
+    "contactUs": "Contact Us",
+    "luxuryStandard": "Luxury Standard",
+    "secondaryHeading": "Find your next \ntreasure here",
+    "startExploring": "Start Exploring"
+  },
+  "Categories": {
+    "title": "Explore Categories",
+    "subtitle": "Browse through thousands of premium listings",
+    "electronics": {
+      "name": "Electronics",
+      "tagline": "Tech Innovation",
+      "title": "Emerging Technologies",
+      "description": "Explore the cutting edge of technology with our curated selection of high-end gadgets and professional computing solutions."
+    },
+    "vehicles": {
+      "name": "Vehicles",
+      "tagline": "Automotive & Vehicles",
+      "title": "Classic Cars",
+      "description": "From rare collectibles to modern performance icons, discover vehicles that redefine the standard of excellence."
+    },
+    "realEstate": {
+      "name": "Real Estate",
+      "tagline": "Real Estate",
+      "title": "Prime Living",
+      "description": "Discover exceptional properties and modern living spaces designed for those who appreciate refined aesthetics."
+    },
+    "fashion": {
+      "name": "Fashion",
+      "tagline": "Fashion & Design",
+      "title": "Fashion Collection",
+      "description": "Elevate your wardrobe with authentic designer pieces and luxury accessories from the world's most prestigious houses."
+    },
+    "homeGarden": {
+      "name": "Home/Garden",
+      "tagline": "Home & Gardens",
+      "title": "Flowers & Gardening",
+      "description": "Transform your living environment with premium furniture, rare botanicals, and sophisticated garden elements."
+    },
+    "jobs": {
+      "name": "Jobs",
+      "tagline": "Jobs",
+      "title": "Professional Growth",
+      "description": "Connect with high-impact opportunities in leading organizations and visionary startups across the globe."
+    },
+    "animals": {
+      "name": "Animals",
+      "tagline": "Elite Care",
+      "title": "Pedigree Standards",
+      "description": "Ensuring the highest standard of care and provenance for purebred companions and high-end equestrian assets."
+    }
+  },
+  "Footer": {
+    "tagline": "The premier destination for buying and selling high-quality pre-owned items. Experience the future of classifieds.",
+    "company": "Company",
+    "support": "Support",
+    "helpCenter": "Help Center",
+    "safetyRules": "Safety Rules",
+    "tos": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "copyright": "© 2026 Zufriedene Verkäufe GmbH. All rights reserved."
+  },
+  "About": {
+    "title": "Experience True Value with Zufriedene Verkäufe.",
+    "intro": "Where authenticity, trust, and elegance meet. As Germany's premier platform for verified luxury trade, we bring the best of all worlds together: a beloved brand, exceptional products, and a commitment to excellence.",
+    "howItWorks": "Learn how it works",
+    "mission": "\"At Zufriedene Verkäufe, we believe purchasing should feel as rewarding as ownership. As the exclusive seller on our platform, every product you see is carefully selected, professionally verified, and offered with absolute confidence.\"",
+    "values": {
+      "authenticity": {
+        "title": "Uncompromised Authenticity",
+        "description": "Every item sold on Zufriedene Verkäufe is 100% genuine. We do not permit third-party sellers, ensuring full quality control and a consistently premium standard across our catalogue."
+      },
+      "presentation": {
+        "title": "Thoughtfully Presented Products",
+        "description": "Each listing features clear imagery and detailed descriptions designed to help you choose with confidence and clarity. What you see is exactly what we deliver."
+      },
+      "payments": {
+        "title": "Seamless and Flexible Payments",
+        "description": "Zufriedene Verkäufe offers secure online payment options supported by trusted financial channels. For added convenience, customers may choose flexible instalment plans."
+      },
+      "promise": {
+        "title": "A Promise Beyond Purchase",
+        "description": "From checkout to delivery and beyond, Zufriedene Verkäufe is committed to exceptional service, reliability, and customer satisfaction—because luxury is not just what you buy but how you are treated."
+      }
+    }
+  },
+  "Home": {
+    "about": {
+      "tag": "// About Us? //",
+      "heading": "Zufriedene Verkäufe is Germany's premier platform for verified luxury trade. We turn pre-owned assets into secure investments— letting customers browse, select, and own with absolute confidence."
+    },
+    "excellence": {
+      "title": "Curated Excellence",
+      "description": "Discover a new standard of classifieds where luxury meets transparency through our rigorous verification protocols.",
+      "verified": "100% Verified",
+      "directSalesTitle": "Direct Sales Excellence",
+      "directSalesDesc": "Our escrow-based direct sales model ensures that funds are only released once you have inspected and approved the item in person or via certified delivery.",
+      "qualityTitle": "Quality Assurance",
+      "qualityDesc": "Every professional seller on our platform undergoes a multi-stage KYC (Know Your Customer) process, including physical address verification and trade license auditing.",
+      "securityLink": "Read Security Protocol",
+      "identityTitle": "Identity Shield",
+      "identityDesc": "State-of-the-art encryption protecting your personal data and browsing history from third parties.",
+      "conciergeTitle": "Concierge Support",
+      "conciergeDesc": "Access to our Berlin-based support team 24/7 for dispute resolution and marketplace guidance.",
+      "logisticsTitle": "Insured Logistics",
+      "logisticsDesc": "Global shipping partnerships with full insurance coverage for high-value premium assets."
+    }
+  },
+  "CategoryModal": {
+    "category": "Category",
+    "premium": "Premium Selection"
+  },
+  "FAQs": {
+    "title": "How can we assist you?",
+    "description": "Explore our comprehensive guide to secure transactions, premium shipping, and 100% verified luxury trading.",
+    "searchPlaceholder": "Search by topic, keyword, or question...",
+    "searchButton": "Search",
+    "topics": "Topics",
+    "needHelp": "Need live help?",
+    "conciergeService": "Our premium concierge service is available 24/7.",
+    "contactUs": "Contact Us",
+    "noResults": "No results found",
+    "noResultsDesc": "Try a different keyword or browse by topic.",
+    "stillQuestions": "Still have questions?",
+    "stillQuestionsDesc": "We are here to help you navigate your premium trading experience.",
+    "helpCenter": "Visit Help Center",
+    "submitTicket": "Submit a Ticket",
+    "sections": {
+      "verification": "Identity & Trust Verification",
+      "payments": "Secure Payments",
+      "shipping": "White-Glove Shipping",
+      "selling": "Selling on Zufriedene Verkäufe"
+    }
+  },
+  "Contact": {
+    "title": "Zufriedene Verkäufe Support",
+    "description": "Experience the assurance of premium assistance. Our dedicated team is ready to facilitate your high-end transactions and verify the excellence of every listing.",
+    "directChannels": "Direct Channels",
+    "phone": "Phone & WhatsApp",
+    "phoneHours": "Available Mon–Fri, 9:00 – 18:00 CET",
+    "email": "Email Enquiries",
+    "emailResponse": "Typical response time: Under 4 hours",
+    "office": "Berlin Office",
+    "guarantee": "Our Guarantee",
+    "verified": "100% Verified",
+    "verifiedDesc": "Every interaction is encrypted and monitored.",
+    "premiumSupport": "Premium Support",
+    "premiumSupportDesc": "Direct access to our senior verification agents.",
+    "sendMessage": "Send a Message",
+    "formDesc": "Fill out the form below and we will get back to you as soon as possible.",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "subject": "Subject",
+    "message": "Message",
+    "messagePlaceholder": "How can our concierge assist you today?",
+    "sendEnquiry": "Send Enquiry",
+    "visitHeadquarters": "Visit our Berlin Headquarters",
+    "subjects": {
+      "verification": "Verification Request",
+      "listing": "Premium Listing Enquiry",
+      "technical": "Technical Support",
+      "general": "General Question"
+    }
+  },
+  "Legals": {
+    "title": "Legal Framework",
+    "description": "Our commitment to transparency ensures that every interaction on Zufriedene Verkäufe is governed by the highest standards of European digital safety and legal integrity.",
+    "trustBadge": "Trust & Compliance",
+    "lastUpdated": "Last updated",
+    "downloadPdf": "Download PDF",
+    "stillQuestions": "Still have questions?",
+    "complianceHelp": "Our compliance team is available for legal inquiries.",
+    "contactCompliance": "Contact Compliance",
+    "helpCenter": "Help Center",
+    "tabs": {
+      "tos": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookies Policy",
+      "copyright": "Copyright Policy",
+      "installment": "Installment Policy",
+      "imprint": "Imprint"
+    }
+  }
+}

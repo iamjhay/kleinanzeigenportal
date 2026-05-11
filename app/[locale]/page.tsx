@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
+import { useState } from "react";
 import {
-  Search,
-  MapPin,
   Smartphone,
   Car,
   Home as HomeIcon,
@@ -17,92 +15,124 @@ import {
   ShieldCheck,
   Timer,
   Truck,
+  PawPrint,
 } from "lucide-react";
-
-const categories = [
-  {
-    name: "Electronics",
-    icon: <Smartphone size={24} />,
-    color: "bg-[#eafdc5]",
-  },
-  {
-    name: "Vehicles",
-    icon: <Car size={24} />,
-    color: "bg-[#e9eff0]",
-  },
-  {
-    name: "Real Estate",
-    icon: <HomeIcon size={24} />,
-    color: "bg-[#f0f9d9]",
-  },
-  {
-    name: "Fashion",
-    icon: <Shirt size={24} />,
-    color: "bg-[#eafdc5]",
-  },
-  {
-    name: "Home & Garden",
-    icon: <Sprout size={24} />,
-    color: "bg-[#e9eff0]",
-  },
-  {
-    name: "Jobs",
-    icon: <Briefcase size={24} />,
-    color: "bg-[#f0f9d9]",
-  },
-];
-
-const featuredListings = [
-  {
-    id: 1,
-    title: "MacBook Pro M3 Max - 16-inch, 64GB RAM",
-    price: "€3,499",
-    location: "Berlin, Mitte",
-    image: "/macbook.png",
-    category: "Electronics",
-  },
-  {
-    id: 2,
-    title: "Tesla Model 3 Long Range - White, 2023",
-    price: "€42,500",
-    location: "Munich, Schwabing",
-    image: "/tesla.png",
-    category: "Vehicles",
-  },
-  {
-    id: 3,
-    title: "Modern Velvet Sofa - Deep Gray, Brand New",
-    price: "€899",
-    location: "Hamburg, Altona",
-    image: "/sofa.png",
-    category: "Home & Garden",
-  },
-  {
-    id: 4,
-    title: "Omega Seamaster - Black Dial, Steel Bracelet",
-    price: "€5,200",
-    location: "Frankfurt, Westend",
-    image: "/watch.png",
-    category: "Fashion",
-  },
-];
+import CategoryModal from "@/components/CategoryModal";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export default function Home() {
+  const t = useTranslations("Hero");
+  const tCat = useTranslations("Categories");
+  const tHome = useTranslations("Home");
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
+
+  // Simple helper to prevent the brand name from being translated
+  const protectBrand = (text: string) => {
+    const brand = "Zufriedene Verkäufe";
+    if (!text.includes(brand)) return text;
+
+    const parts = text.split(brand);
+    return (
+      <>
+        {parts.map((part, i) => (
+          <span key={i}>
+            {part}
+            {i < parts.length - 1 && <span translate="no">{brand}</span>}
+          </span>
+        ))}
+      </>
+    );
+  };
+
+  const categories = [
+    {
+      name: tCat("electronics.name"),
+      icon: <Smartphone size={24} />,
+      color: "bg-[#eafdc5]",
+      tagline: tCat("electronics.tagline"),
+      title: tCat("electronics.title"),
+      description: tCat("electronics.description"),
+      backgroundImage: "/assets/electronics-bg.png",
+    },
+    {
+      name: tCat("vehicles.name"),
+      icon: <Car size={24} />,
+      color: "bg-[#e9eff0]",
+      tagline: tCat("vehicles.tagline"),
+      title: tCat("vehicles.title"),
+      description: tCat("vehicles.description"),
+      backgroundImage: "/assets/vehicles-bg.png",
+    },
+    {
+      name: tCat("realEstate.name"),
+      icon: <HomeIcon size={24} />,
+      color: "bg-[#f0f9d9]",
+      tagline: tCat("realEstate.tagline"),
+      title: tCat("realEstate.title"),
+      description: tCat("realEstate.description"),
+      backgroundImage: "/assets/realestate-bg.png",
+    },
+    {
+      name: tCat("fashion.name"),
+      icon: <Shirt size={24} />,
+      color: "bg-[#dad9f9]",
+      tagline: tCat("fashion.tagline"),
+      title: tCat("fashion.title"),
+      description: tCat("fashion.description"),
+      backgroundImage: "/assets/fashion-bg.png",
+    },
+    {
+      name: tCat("homeGarden.name"),
+      icon: <Sprout size={24} />,
+      color: "bg-[#e9eff0]",
+      tagline: tCat("homeGarden.tagline"),
+      title: tCat("homeGarden.title"),
+      description: tCat("homeGarden.description"),
+      backgroundImage: "/assets/homegarden-bg.png",
+    },
+    {
+      name: tCat("jobs.name"),
+      icon: <Briefcase size={24} />,
+      color: "bg-[#f0f9d9]",
+      tagline: tCat("jobs.tagline"),
+      title: tCat("jobs.title"),
+      description: tCat("jobs.description"),
+      backgroundImage: "/assets/img-2.png",
+    },
+    {
+      name: tCat("animals.name"),
+      icon: <PawPrint size={24} />,
+      color: "bg-[#eafdc5]",
+      tagline: tCat("animals.tagline"),
+      title: tCat("animals.title"),
+      description: tCat("animals.description"),
+      backgroundImage: "/assets/prod-5.png",
+    },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col bg-white">
+      <CategoryModal
+        isOpen={!!selectedCategory}
+        onClose={() => setSelectedCategory(null)}
+        category={selectedCategory}
+      />
       <main className="flex-1">
         {/* Full-Screen Hero Section - Matching User Requested Layout */}
-        <section className="relative h-[95vh] w-full overflow-hidden">
+        <section className="relative sm:h-[95vh] w-full overflow-hidden">
           {/* Background Image */}
           <Image
-            src="/assets/img-1.png"
-            alt="Kleinanzeigenportal Luxury Lifestyle"
+            src="/assets/header-img-1.png"
+            alt="Zufriedene Verkäufe Luxury Lifestyle"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
           {/* Gradient Overlay for legibility */}
-          <div className="absolute z-10 inset-0 bg-linear-to-b from-black/60 via-transparent to-black/50" />
+          <div className="absolute z-10 inset-0 bg-linear-to-b from-black/90 via-black/40 to-black/50" />
 
           {/* Hero Content Container */}
           <div className="relative z-20 mx-auto h-full max-w-7xl px-4 sm px-4:sm:px-8 lg:px-12 flex flex-col">
@@ -125,26 +155,21 @@ export default function Home() {
 
             {/* Middle Left: Main Heading */}
             <div className="mt-8 max-w-4xl">
-              <h1 className="text-5xl md:text-6xl lg:text-[80px] font-extrabold tracking-tight text-white leading-[1.1] lg:leading-[0.9] font-montserrat">
-                Your luxury <br />
-                lifestyle with <br />
-                Kleinanzeigen
+              <h1 className="text-5xl md:text-6xl lg:text-[75px] font-extrabold tracking-tight text-white leading-[1.1] lg:leading-none font-montserrat whitespace-pre-line">
+                {protectBrand(t("title"))}
               </h1>
+              <p className="mt-4 md:mt-8 text-[17px] sm:text-lg text-white/80 font-medium max-w-xl leading-relaxed">
+                {protectBrand(t("description"))}
+              </p>
             </div>
 
             {/* Bottom Content Area */}
-            <div className="mt-5 lg:mt-10 pb-16 lg:pb-24 grid grid-cols-1 lg:grid-cols-3 items-end gap-12">
+            <div className="mt-8 lg:mt-10 pb-16 lg:pb-24 grid grid-cols-1 lg:grid-cols-3 items-center gap-12">
               {/* Bottom Center: Action & Intro */}
               <div className="lg:col-start-1 flex flex-col items-start lg:text-left">
-                <p className="mb-10 max-w-[450px] text-[15px] font-medium text-white/90 leading-relaxed">
-                  At Kleinanzeigenportal, we provide a curated marketplace for
-                  high-end assets, professionally verified for your absolute
-                  peace of mind.
-                </p>
-
-                <div className="flex items-center gap-3">
-                  <Link href="/marketplace">
-                    <button className="rounded-full bg-[#122e1e] px-10 py-5 text-sm font-black uppercase tracking-widest text-[#b5e941] shadow-2xl transition-all hover:scale-105 active:scale-95">
+                <div className="flex items-center justify-center gap-3">
+                  <Link href="/contact">
+                    <button className="rounded-full bg-[#122e1e] border border-[#b5e941] px-10 py-5 text-sm font-black uppercase tracking-widest text-[#b5e941] shadow-2xl transition-all hover:scale-105 active:scale-95">
                       Contact Us
                     </button>
                   </Link>
@@ -159,24 +184,25 @@ export default function Home() {
                 <div className="bg-[#b5e941] rounded-2xl px-2 py-3 w-[380px] flex items-center gap-4 shadow-2xl border border-white/20">
                   <div className="relative h-24 w-32 shrink-0 overflow-hidden rounded-xl shadow-inner">
                     <Image
-                      src="/assets/img-1.png"
+                      src="/assets/header-img-1.png"
                       alt="Luxury Treasure"
                       fill
+                      sizes="(max-width: 1200px) 100vw, 380px"
                       className="object-cover"
                     />
                   </div>
                   <div className="flex flex-col items-start gap-1">
                     <span className="rounded-full border border-[#1d4b00]/30 px-3 py-0.5 text-[9px] font-black text-[#1d4b00] uppercase tracking-widest">
-                      Luxury Standard
+                      {t("luxuryStandard")}
                     </span>
-                    <h4 className="mt-2 text-base font-extrabold text-[#1d4b00] leading-tight font-montserrat tracking-tight">
-                      Find your next <br /> treasure here
+                    <h4 className="mt-2 text-base font-extrabold text-[#1d4b00] leading-tight font-montserrat tracking-tight whitespace-pre-line">
+                      {t("secondaryHeading")}
                     </h4>
                     <Link
                       href="/#"
                       className="mt-1 text-[10px] font-black text-[#1d4b00] underline underline-offset-4 hover:opacity-60 transition-opacity uppercase tracking-wider"
                     >
-                      Start Exploring
+                      {t("startExploring")}
                     </Link>
                   </div>
                 </div>
@@ -189,11 +215,11 @@ export default function Home() {
         <section className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 py-14 sm:py-16">
           <div className="mb-12 flex items-center justify-between">
             <div>
-              <h2 className="text-3xl md:text-2xl font-black tracking-tight text-primary font-montserrat uppercase">
-                Explore Categories
+              <h2 className="text-2xl md:text-3xl font-black tracking-tight text-primary font-montserrat uppercase">
+                {tCat("title")}
               </h2>
               <p className="mt-1 text-sm text-muted font-medium">
-                Browse through thousands of premium listings
+                {tCat("subtitle")}
               </p>
             </div>
             <Link
@@ -205,14 +231,15 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
-            {categories.map((cat) => (
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 lg:grid-cols-7">
+            {categories.map((cat, index) => (
               <div
-                key={cat.name}
-                className={`group cursor-pointer rounded-lg p-6 flex flex-col h-[180px] transition-all duration-500 ${cat.color}`}
+                key={index}
+                onClick={() => setSelectedCategory(cat)}
+                className={`group cursor-pointer rounded-lg p-4 md:p-6 flex flex-col h-[120px] md:h-[160px] transition-all duration-500 hover:scale-[0.95] hover:shadow-xs ${cat.color} hover:ring-1 hover:border border-[#b5e941] ring-offset-2 hover:ring-secondary`}
               >
                 <div className="flex-1">
-                  <h3 className="font-bold text-[#1d4b00] text-[15px] leading-tight font-montserrat tracking-tight mb-1">
+                  <h3 className="font-bold text-[#1d4b00] text-sm sm:text-[15px] leading-tight font-montserrat tracking-tight mb-1">
                     {cat.name}
                   </h3>
                 </div>
@@ -234,13 +261,10 @@ export default function Home() {
               {/* Left Column: Vision */}
               <div className="flex flex-col items-start">
                 <div className="inline-block px-4 py-1.5 rounded bg-[#fe89be]/20 text-[11px] font-black tracking-[0.2em] text-[#fe89be] uppercase mb-10 border border-[#fe89be]/30">
-                  // About Us? //
+                  {tHome("about.tag")}
                 </div>
                 <h2 className="text-2xl font-semibold tracking-tight text-primary leading-tight font-montserrat">
-                  Kleinanzeigenportal is Germany&apos;s premier platform for
-                  verified luxury trade. We turn pre-owned assets into secure
-                  investments— letting customers browse, select, and own with
-                  absolute confidence.
+                  {protectBrand(tHome("about.heading"))}
                 </h2>
               </div>
             </div>
@@ -252,6 +276,7 @@ export default function Home() {
                   src="/assets/prod-1.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
                 />
               </div>
@@ -260,22 +285,26 @@ export default function Home() {
                   src="/assets/prod-2.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
+                  priority
                 />
               </div>
               <div className="lg:col-span-2 relative w-full aspect-video rounded-2xl h-full overflow-hidden shadow-2xl border-4 border-[#b5e941]/20">
                 <Image
-                  src="/assets/prod-3.png"
+                  src="/assets/prod-4.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
                 />
               </div>
               <div className="col-span-2 lg:col-span-1 relative w-full aspect-video rounded-2xl h-full overflow-hidden shadow-2xl border-4 border-[#b5e941]/20">
                 <Image
-                  src="/assets/prod-4.png"
+                  src="/assets/prod-3.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
                 />
               </div>
@@ -284,6 +313,7 @@ export default function Home() {
                   src="/assets/prod-7.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
                 />
               </div>
@@ -292,7 +322,9 @@ export default function Home() {
                   src="/assets/prod-5.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
+                  priority
                 />
               </div>
               <div className="col-span-2 relative w-full aspect-video rounded-2xl h-full overflow-hidden shadow-2xl border-4 border-[#b5e941]/20">
@@ -300,6 +332,7 @@ export default function Home() {
                   src="/assets/prod-6.png"
                   alt="Luxury Item"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                   className="object-cover"
                 />
               </div>
@@ -311,7 +344,7 @@ export default function Home() {
                 </h3>
                 <p className="max-w-md text-white/70 text-lg font-medium leading-relaxed mb-10 font-inter">
                   With verified authentication, professional presentation, and
-                  secure payments, Kleinanzeigenportal helps collectors and
+                  secure payments, Zufriedene Verkäufe helps collectors and
                   enthusiasts trade with complete peace of mind.
                 </p>
                 <Link href="/marketplace">
@@ -328,12 +361,11 @@ export default function Home() {
         <section className="bg-white py-24">
           <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-[#001226] font-montserrat mb-4">
-                Curated Excellence
+              <h2 className="text-2xl md:text-3xl font-black tracking-tight text-primary font-montserrat mb-4 uppercase">
+                {tHome("excellence.title")}
               </h2>
               <p className="text-muted font-medium max-w-2xl mx-auto text-base">
-                Discover a new standard of classifieds where luxury meets
-                transparency through our rigorous verification protocols.
+                {tHome("excellence.description")}
               </p>
             </div>
 
@@ -342,15 +374,13 @@ export default function Home() {
               <div className="lg:col-span-2 rounded-md bg-zinc-50/50 border border-zinc-200 px-5 py-8 sm:p-10 flex flex-col">
                 <div className="mb-6">
                   <span className="inline-block px-3 py-1 rounded-full bg-[#128a12] text-[10px] font-black text-white uppercase tracking-widest mb-4">
-                    100% Verified
+                    {tHome("excellence.verified")}
                   </span>
                   <h3 className="text-2xl font-extrabold text-[#001226] font-montserrat mb-2">
-                    Direct Sales Excellence
+                    {tHome("excellence.directSalesTitle")}
                   </h3>
                   <p className="text-muted text-[15px] font-medium leading-relaxed max-w-xl">
-                    Our escrow-based direct sales model ensures that funds are
-                    only released once you have inspected and approved the item
-                    in person or via certified delivery.
+                    {tHome("excellence.directSalesDesc")}
                   </p>
                 </div>
                 <div className="mt-auto relative aspect-16/7 w-full overflow-hidden rounded-xl border border-zinc-200/50 shadow-inner">
@@ -358,6 +388,7 @@ export default function Home() {
                     src="/assets/img-4.png"
                     alt="Luxury Watch Movement"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 66vw"
                     className="object-cover"
                   />
                 </div>
@@ -370,12 +401,10 @@ export default function Home() {
                     <ShieldCheck size={24} />
                   </div>
                   <h3 className="text-2xl font-extrabold font-montserrat mb-2">
-                    Quality Assurance
+                    {tHome("excellence.qualityTitle")}
                   </h3>
                   <p className="text-zinc-400 text-[15px] font-medium leading-relaxed">
-                    Every professional seller on our platform undergoes a
-                    multi-stage KYC (Know Your Customer) process, including
-                    physical address verification and trade license auditing.
+                    {tHome("excellence.qualityDesc")}
                   </p>
                 </div>
                 <div className="mt-auto">
@@ -383,7 +412,7 @@ export default function Home() {
                     href="#"
                     className="inline-flex items-center gap-2 text-[#b5e941] font-bold hover:gap-3 transition-all text-sm"
                   >
-                    Read Security Protocol <ArrowRight size={18} />
+                    {tHome("excellence.securityLink")} <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>
@@ -396,11 +425,10 @@ export default function Home() {
                   <ShieldCheck size={24} />
                 </div>
                 <h4 className="text-lg font-extrabold text-[#001226] font-montserrat mb-3">
-                  Identity Shield
+                  {tHome("excellence.identityTitle")}
                 </h4>
                 <p className="text-sm text-muted font-medium leading-relaxed">
-                  State-of-the-art encryption protecting your personal data and
-                  browsing history from third parties.
+                  {tHome("excellence.identityDesc")}
                 </p>
               </div>
 
@@ -410,11 +438,10 @@ export default function Home() {
                   <Timer size={24} />
                 </div>
                 <h4 className="text-lg font-extrabold text-[#001226] font-montserrat mb-3">
-                  Concierge Support
+                  {tHome("excellence.conciergeTitle")}
                 </h4>
                 <p className="text-sm text-muted font-medium leading-relaxed">
-                  Access to our Berlin-based support team 24/7 for dispute
-                  resolution and marketplace guidance.
+                  {tHome("excellence.conciergeDesc")}
                 </p>
               </div>
 
@@ -424,11 +451,10 @@ export default function Home() {
                   <Truck size={24} />
                 </div>
                 <h4 className="text-lg font-extrabold text-[#001226] font-montserrat mb-3">
-                  Insured Logistics
+                  {tHome("excellence.logisticsTitle")}
                 </h4>
                 <p className="text-sm text-muted font-medium leading-relaxed">
-                  Global shipping partnerships with full insurance coverage for
-                  high-value premium assets.
+                  {tHome("excellence.logisticsDesc")}
                 </p>
               </div>
             </div>

@@ -1,0 +1,202 @@
+{
+  "Navbar": {
+    "home": "Startseite",
+    "marketplace": "Marktplatz",
+    "vehicles": "Fahrzeuge",
+    "realEstate": "Immobilien",
+    "about": "Über uns",
+    "faqs": "FAQs",
+    "terms": "AGB",
+    "legalPolicies": "Rechtliches",
+    "contact": "Kontakt",
+    "contactUs": "Kontaktieren Sie uns",
+    "sell": "Jetzt verkaufen"
+  },
+  "Hero": {
+    "tagline": "Premium Marktplatz",
+    "title": "Ihr Luxus-\nLifestyle mit \nZufriedene Verkäufe",
+    "description": "Bei Zufriedene Verkäufe bieten wir einen kuratierten Marktplatz für hochwertige Vermögenswerte, professionell verifiziert für Ihre absolute Sicherheit.",
+    "cta": "Marktplatz erkunden",
+    "contactUs": "Kontakt",
+    "luxuryStandard": "Luxus-Standard",
+    "secondaryHeading": "Finden Sie hier Ihren \nnächsten Schatz",
+    "startExploring": "Entdeckung starten"
+  },
+  "Categories": {
+    "title": "Kategorien erkunden",
+    "subtitle": "Durchsuchen Sie Tausende von Premium-Angeboten",
+    "electronics": {
+      "name": "Elektronik",
+      "tagline": "Tech-Innovation",
+      "title": "Zukunftsweisende Technologien",
+      "description": "Entdecken Sie die Spitze der Technologie mit unserer kuratierten Auswahl an High-End-Gadgets und professionellen Computerlösungen."
+    },
+    "vehicles": {
+      "name": "Fahrzeuge",
+      "tagline": "Automobil & Fahrzeuge",
+      "title": "Klassische Autos",
+      "description": "Von seltenen Sammlerstücken bis hin zu modernen Performance-Ikonen: Entdecken Sie Fahrzeuge, die den Standard an Exzellenz neu definieren."
+    },
+    "realEstate": {
+      "name": "Immobilien",
+      "tagline": "Immobilien",
+      "title": "Erstklassiges Wohnen",
+      "description": "Entdecken Sie außergewöhnliche Immobilien und moderne Wohnräume für Menschen, die raffinierte Ästhetik schätzen."
+    },
+    "fashion": {
+      "name": "Mode",
+      "tagline": "Mode & Design",
+      "title": "Fashion-Kollektion",
+      "description": "Werten Sie Ihre Garderobe mit authentischen Designerstücken und Luxus-Accessoires der renommiertesten Häuser der Welt auf."
+    },
+    "homeGarden": {
+      "name": "Haus/Garten",
+      "tagline": "Haus & Gärten",
+      "title": "Blumen & Gartenarbeit",
+      "description": "Verwandeln Sie Ihr Wohnumfeld mit erstklassigen Möbeln, seltenen Pflanzen und anspruchsvollen Gartenelementen."
+    },
+    "jobs": {
+      "name": "Jobs",
+      "tagline": "Jobs",
+      "title": "Berufliches Wachstum",
+      "description": "Knüpfen Sie Kontakte zu hochwirksamen Möglichkeiten in führenden Organisationen und visionären Start-ups auf der ganzen Welt."
+    },
+    "animals": {
+      "name": "Tiere",
+      "tagline": "Elite-Pflege",
+      "title": "Stammbaum-Standards",
+      "description": "Gewährleistung des höchsten Standards an Pflege und Herkunft für reinrassige Begleiter und hochwertige Reitsport-Assets."
+    }
+  },
+  "Footer": {
+    "tagline": "Die führende Adresse für den Kauf und Verkauf hochwertiger gebrauchter Artikel. Erleben Sie die Zukunft der Kleinanzeigen.",
+    "company": "Unternehmen",
+    "support": "Support",
+    "helpCenter": "Hilfe-Center",
+    "safetyRules": "Sicherheitsregeln",
+    "tos": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "copyright": "© 2026 Zufriedene Verkäufe GmbH. Alle Rechte vorbehalten."
+  },
+  "About": {
+    "title": "Erleben Sie wahren Wert mit Zufriedene Verkäufe.",
+    "intro": "Wo Authentizität, Vertrauen und Eleganz aufeinandertreffen. Als Deutschlands führende Plattform für verifizierten Luxushandel vereinen wir das Beste aus allen Welten: eine geliebte Marke, außergewöhnliche Produkte und eine Verpflichtung zu Exzellenz.",
+    "howItWorks": "Erfahren Sie, wie es funktioniert",
+    "mission": "\"Bei Zufriedene Verkäufe glauben wir, dass sich der Kauf genauso lohnend anfühlen sollte wie der Besitz. Als exklusiver Verkäufer auf unserer Plattform wird jedes Produkt, das Sie sehen, sorgfältig ausgewählt, professionell verifiziert und mit absolutem Vertrauen angeboten.\"",
+    "values": {
+      "authenticity": {
+        "title": "Kompromisslose Authentizität",
+        "description": "Jeder bei Zufriedene Verkäufe verkaufte Artikel ist zu 100 % original. Wir lassen keine Drittanbieter zu und gewährleisten so eine vollständige Qualitätskontrolle und einen konsistenten Premium-Standard in unserem gesamten Katalog."
+      },
+      "presentation": {
+        "title": "Durchdacht präsentierte Produkte",
+        "description": "Jedes Angebot zeichnet sich durch klare Bilder und detaillierte Beschreibungen aus, die Ihnen helfen sollen, mit Vertrauen und Klarheit zu wählen. Was Sie sehen, ist genau das, was wir liefern."
+      },
+      "payments": {
+        "title": "Nahtlose und flexible Zahlungen",
+        "description": "Zufriedene Verkäufe bietet sichere Online-Zahlungsoptionen, die von vertrauenswürdigen Finanzkanälen unterstützt werden. Für zusätzlichen Komfort können Kunden flexible Ratenzahlungspläne wählen."
+      },
+      "promise": {
+        "title": "Ein Versprechen über den Kauf hinaus",
+        "description": "Vom Checkout bis zur Lieferung und darüber hinaus verpflichtet sich Zufriedene Verkäufe zu außergewöhnlichem Service, Zuverlässigkeit und Kundenzufriedenheit – denn Luxus ist nicht nur das, was man kauft, sondern wie man behandelt wird."
+      }
+    }
+  },
+  "Home": {
+    "about": {
+      "tag": "// Über uns? //",
+      "heading": "Zufriedene Verkäufe ist Deutschlands führende Plattform für verifizierten Luxushandel. Wir verwandeln gebrauchte Vermögenswerte in sichere Investitionen – so können Kunden mit absolutem Vertrauen stöbern, auswählen und besitzen."
+    },
+    "excellence": {
+      "title": "Kurierte Exzellenz",
+      "description": "Entdecken Sie einen neuen Standard für Kleinanzeigen, bei dem Luxus durch unsere strengen Verifizierungsprotokolle auf Transparenz trifft.",
+      "verified": "100% Verifiziert",
+      "directSalesTitle": "Direktverkaufs-Exzellenz",
+      "directSalesDesc": "Unser Treuhand-basiertes Direktverkaufsmodell stellt sicher, dass Gelder erst freigegeben werden, wenn Sie den Artikel persönlich oder per zertifizierter Lieferung geprüft und genehmigt haben.",
+      "qualityTitle": "Qualitätssicherung",
+      "qualityDesc": "Jeder professionelle Verkäufer auf unserer Plattform durchläuft einen mehrstufigen KYC-Prozess (Know Your Customer), einschließlich der Verifizierung der physischen Adresse und der Prüfung der Gewerbelizenz.",
+      "securityLink": "Sicherheitsprotokoll lesen",
+      "identityTitle": "Identitätsschutz",
+      "identityDesc": "Modernste Verschlüsselung, die Ihre persönlichen Daten und Ihren Browserverlauf vor Dritten schützt.",
+      "conciergeTitle": "Concierge-Support",
+      "conciergeDesc": "Zugang zu unserem in Berlin ansässigen Support-Team rund um die Uhr für die Beilegung von Streitigkeiten und Beratung auf dem Marktplatz.",
+      "logisticsTitle": "Versicherte Logistik",
+      "logisticsDesc": "Globale Versandpartnerschaften mit vollem Versicherungsschutz für hochwertige Premium-Assets."
+    }
+  },
+  "CategoryModal": {
+    "category": "Kategorie",
+    "premium": "Premium-Auswahl"
+  },
+  "FAQs": {
+    "title": "Wie können wir Ihnen helfen?",
+    "description": "Entdecken Sie unseren umfassenden Leitfaden für sichere Transaktionen, Premium-Versand und 100% verifizierten Luxushandel.",
+    "searchPlaceholder": "Suche nach Thema, Stichwort oder Frage...",
+    "searchButton": "Suchen",
+    "topics": "Themen",
+    "needHelp": "Benötigen Sie Hilfe?",
+    "conciergeService": "Unser Premium-Concierge-Service ist rund um die Uhr verfügbar.",
+    "contactUs": "Kontaktieren Sie uns",
+    "noResults": "Keine Ergebnisse gefunden",
+    "noResultsDesc": "Versuchen Sie ein anderes Stichwort oder stöbern Sie nach Themen.",
+    "stillQuestions": "Haben Sie noch Fragen?",
+    "stillQuestionsDesc": "Wir sind hier, um Sie bei Ihrem Premium-Handelserlebnis zu unterstützen.",
+    "helpCenter": "Hilfe-Center besuchen",
+    "submitTicket": "Ticket einreichen",
+    "sections": {
+      "verification": "Identitäts- & Vertrauensprüfung",
+      "payments": "Sichere Zahlungen",
+      "shipping": "Premium-Versand",
+      "selling": "Verkaufen auf Zufriedene Verkäufe"
+    }
+  },
+  "Contact": {
+    "title": "Zufriedene Verkäufe Support",
+    "description": "Erleben Sie die Sicherheit erstklassiger Unterstützung. Unser engagiertes Team ist bereit, Ihre hochwertigen Transaktionen zu erleichtern und die Exzellenz jedes Angebots zu verifizieren.",
+    "directChannels": "Direkte Kanäle",
+    "phone": "Telefon & WhatsApp",
+    "phoneHours": "Verfügbar Mo–Fr, 9:00 – 18:00 Uhr MEZ",
+    "email": "E-Mail-Anfragen",
+    "emailResponse": "Typische Antwortzeit: Unter 4 Stunden",
+    "office": "Büro Berlin",
+    "guarantee": "Unsere Garantie",
+    "verified": "100% Verifiziert",
+    "verifiedDesc": "Jede Interaktion ist verschlüsselt und wird überwacht.",
+    "premiumSupport": "Premium-Support",
+    "premiumSupportDesc": "Direkter Zugang zu unseren leitenden Verifizierungsmitarbeitern.",
+    "sendMessage": "Eine Nachricht senden",
+    "formDesc": "Füllen Sie das untenstehende Formular aus und wir werden uns so schnell wie möglich bei Ihnen melden.",
+    "fullName": "Vollständiger Name",
+    "emailAddress": "E-Mail-Adresse",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "messagePlaceholder": "Wie kann unser Concierge Ihnen heute helfen?",
+    "sendEnquiry": "Anfrage senden",
+    "visitHeadquarters": "Besuchen Sie unser Berliner Hauptquartier",
+    "subjects": {
+      "verification": "Verifizierungsanfrage",
+      "listing": "Anfrage zu Premium-Angeboten",
+      "technical": "Technischer Support",
+      "general": "Allgemeine Frage"
+    }
+  },
+  "Legals": {
+    "title": "Rechtlicher Rahmen",
+    "description": "Unser Engagement für Transparenz stellt sicher, dass jede Interaktion auf Zufriedene Verkäufe den höchsten Standards der europäischen digitalen Sicherheit und rechtlichen Integrität unterliegt.",
+    "trustBadge": "Vertrauen & Compliance",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "downloadPdf": "PDF herunterladen",
+    "stillQuestions": "Haben Sie noch Fragen?",
+    "complianceHelp": "Unser Compliance-Team steht für rechtliche Anfragen zur Verfügung.",
+    "contactCompliance": "Compliance kontaktieren",
+    "helpCenter": "Hilfe-Center",
+    "tabs": {
+      "tos": "Nutzungsbedingungen",
+      "privacy": "Datenschutz",
+      "cookies": "Cookie-Richtlinie",
+      "copyright": "Urheberrechtsrichtlinie",
+      "installment": "Ratenzahlungsrichtlinie",
+      "imprint": "Impressum"
+    }
+  }
+}

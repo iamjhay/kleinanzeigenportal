@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   Phone,
   Mail,
@@ -12,17 +13,35 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
+  const t = useTranslations("Contact");
+
+  // Simple helper to prevent the brand name from being translated
+  const protectBrand = (text: string) => {
+    const brand = "Zufriedene Verkäufe";
+    if (!text.includes(brand)) return text;
+
+    const parts = text.split(brand);
+    return (
+      <>
+        {parts.map((part, i) => (
+          <span key={i}>
+            {part}
+            {i < parts.length - 1 && <span translate="no">{brand}</span>}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-white pt-20">
       {/* Header Section */}
       <section className="mx-auto sm:max-w-4xl px-4 sm:px-8 py-20 text-center">
         <h1 className="mb-6 text-3xl xl:text-5xl font-bold tracking-tight text-primary font-serif">
-          Kleinanzeigenportal Support
+          {protectBrand(t("title"))}
         </h1>
         <p className="mx-auto max-w-2xl text-base sm:text-lg text-muted leading-relaxed font-medium">
-          Experience the assurance of premium assistance. Our dedicated team is
-          ready to facilitate your high-end transactions and verify the
-          excellence of every listing.
+          {protectBrand(t("description"))}
         </p>
       </section>
 
@@ -33,7 +52,7 @@ export default function ContactPage() {
           <div className="flex flex-col gap-12">
             <div>
               <h2 className="mb-10 text-2xl font-bold text-primary font-montserrat tracking-tight">
-                Direct Channels
+                {t("directChannels")}
               </h2>
 
               <div className="flex flex-col gap-8">
@@ -44,13 +63,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary mb-1">
-                      Phone & WhatsApp
+                      {t("phone")}
                     </p>
                     <p className="text-sm sm:text-lg xl:text-xl font-bold text-primary font-montserrat tracking-tight">
                       +4915731582988
                     </p>
                     <p className="mt-1 text-[13px] sm:text-sm text-muted font-medium">
-                      Available Mon–Fri, 9:00 – 18:00 CET
+                      {t("phoneHours")}
                     </p>
                   </div>
                 </div>
@@ -62,13 +81,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary mb-1">
-                      Email Enquiries
+                      {t("email")}
                     </p>
                     <p className="text-sm sm:text-lg xl:text-xl font-bold text-primary font-montserrat tracking-tight">
-                      inforkleinanzeigenportal@gmail.com
+                      info.zufriedeneverkaeufe@gmail.com
                     </p>
                     <p className="mt-1 text-[13px] sm:text-sm text-muted font-medium">
-                      Typical response time: Under 4 hours
+                      {t("emailResponse")}
                     </p>
                   </div>
                 </div>
@@ -80,7 +99,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary mb-1">
-                      Berlin Office
+                      {t("office")}
                     </p>
                     <p className="text-sm sm:text-lg xl:text-xl font-bold text-primary font-montserrat tracking-tight">
                       Clara-zetkin-stra 1
@@ -96,25 +115,25 @@ export default function ContactPage() {
             {/* Guarantee Box */}
             <div className="rounded bg-zinc-50 p-4 sm:p-8 border border-border">
               <h3 className="mb-6 text-lg font-bold text-primary font-montserrat tracking-tight">
-                Our Guarantee
+                {t("guarantee")}
               </h3>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <div className="flex items-center gap-2 rounded bg-secondary px-3 py-1.5 text-[10px] font-black text-white uppercase tracking-wider shadow-sm">
                     <ShieldCheck size={14} />
-                    <span>100% Verified</span>
+                    <span>{t("verified")}</span>
                   </div>
                   <p className="text-sm text-muted font-medium leading-relaxed">
-                    Every interaction is encrypted and monitored.
+                    {t("verifiedDesc")}
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <div className="flex items-center gap-2 rounded bg-accent/20 border border-accent/30 px-3 py-1.5 text-[10px] font-black text-accent uppercase tracking-wider">
                     <Award size={14} />
-                    <span>Premium Support</span>
+                    <span>{t("premiumSupport")}</span>
                   </div>
                   <p className="text-sm text-muted font-medium leading-relaxed">
-                    Direct access to our senior verification agents.
+                    {t("premiumSupportDesc")}
                   </p>
                 </div>
               </div>
@@ -126,19 +145,16 @@ export default function ContactPage() {
             <div className="rounded border border-border bg-white px-4 py-8 sm:p-10 shadow-2xl">
               <div className="mb-10">
                 <h2 className="mb-2 text-2xl font-bold text-primary font-montserrat tracking-tight">
-                  Send a Message
+                  {t("sendMessage")}
                 </h2>
-                <p className="text-sm text-muted">
-                  Fill out the form below and we will get back to you as soon as
-                  possible.
-                </p>
+                <p className="text-sm text-muted">{t("formDesc")}</p>
               </div>
 
               <form className="flex flex-col gap-8">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="flex flex-col gap-3">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                      Full Name
+                      {t("fullName")}
                     </label>
                     <input
                       type="text"
@@ -148,7 +164,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex flex-col gap-3">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                      Email Address
+                      {t("emailAddress")}
                     </label>
                     <input
                       type="email"
@@ -160,14 +176,14 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-3">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                    Subject
+                    {t("subject")}
                   </label>
                   <div className="relative">
                     <select className="w-full appearance-none rounded border border-border px-5 py-4 text-sm focus:border-primary focus:outline-none transition-colors bg-white">
-                      <option>Verification Request</option>
-                      <option>Premium Listing Enquiry</option>
-                      <option>Technical Support</option>
-                      <option>General Question</option>
+                      <option>{t("subjects.verification")}</option>
+                      <option>{t("subjects.listing")}</option>
+                      <option>{t("subjects.technical")}</option>
+                      <option>{t("subjects.general")}</option>
                     </select>
                     <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-muted">
                       <ChevronRight size={16} className="rotate-90" />
@@ -177,17 +193,17 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-3">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                    Message
+                    {t("message")}
                   </label>
                   <textarea
                     rows={4}
-                    placeholder="How can our concierge assist you today?"
+                    placeholder={t("messagePlaceholder")}
                     className="rounded border border-border px-5 py-4 text-sm placeholder:text-muted/40 focus:border-primary focus:outline-none transition-colors resize-none"
                   />
                 </div>
 
                 <button className="flex items-center justify-center gap-3 rounded bg-[#000913] py-5 text-[12px] font-black text-white uppercase tracking-[0.25em] shadow-xl hover:bg-primary transition-all active:scale-[0.98]">
-                  <span>Send Enquiry</span>
+                  <span>{t("sendEnquiry")}</span>
                   <Send size={16} />
                 </button>
               </form>
@@ -210,7 +226,7 @@ export default function ContactPage() {
                     <MapPin size={20} />
                   </div>
                   <span className="text-base font-bold text-primary font-montserrat tracking-tight">
-                    Visit our Berlin Headquarters
+                    {t("visitHeadquarters")}
                   </span>
                 </div>
               </div>
