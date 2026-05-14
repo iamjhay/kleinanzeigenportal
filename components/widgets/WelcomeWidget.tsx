@@ -19,7 +19,8 @@ const WelcomeWidget = ({
   locale: string;
 }) => {
   const [greeting, setGreeting] = useState("Welcome");
-  const firstName = userName.split(" ")[0];
+  const firstName =
+    userName && userName.trim() ? userName.trim().split(" ")[0] : "Admin";
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -34,7 +35,8 @@ const WelcomeWidget = ({
         <div className="flex justify-between items-start mb-6">
           <div className="space-y-1">
             <h2 className="text-2xl font-black text-secondary font-serif relative inline-block">
-              {greeting}, <span className="text-primary">{firstName}!</span>
+              {greeting},{" "}
+              <span className="text-primary">{firstName || "Admin"}!</span>
               <div className="absolute -bottom-1 left-0 w-20 h-1 bg-secondary rounded-full"></div>
             </h2>
             <div className=" mt-4">

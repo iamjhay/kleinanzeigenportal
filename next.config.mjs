@@ -3,10 +3,6 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Try both top-level and experimental
-  serverActions: {
-    bodySizeLimit: "20mb",
-  },
   experimental: {
     serverActions: {
       bodySizeLimit: "20mb",

@@ -7,18 +7,21 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const locale = nextUrl.pathname.split("/")[1] || "en";
+      const locale = nextUrl.pathname.split("/")[1];
+      const validLocales = ["en", "de"];
+      const currentLocale = validLocales.includes(locale) ? locale : "en";
+
       const isOnAdmin = nextUrl.pathname.includes("/admin");
       const isOnLogin = nextUrl.pathname.includes("/login");
 
       if (isOnAdmin) {
         if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        return false;
       }
 
       if (isOnLogin && isLoggedIn) {
         return Response.redirect(
-          new URL(`/${locale}/admin/dashboard`, nextUrl),
+          new URL(`/${currentLocale}/admin/dashboard`, nextUrl.origin),
         );
       }
 
