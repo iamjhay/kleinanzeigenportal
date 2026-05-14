@@ -15,12 +15,12 @@ export default function LoginClient({ locale }: { locale: string }) {
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#F8F9FA] p-6">
       {/* Logo */}
       <div className="mb-6">
-        <Link
+        <a
           href="/"
           className="text-[#002147] text-base sm:text-lg font-extrabold font-mono"
         >
           Zufriedene Verkäufe
-        </Link>
+        </a>
       </div>
       <div className="w-full max-w-[480px] md:bg-white rounded-2xl md:border border-gray-200 p-4 md:p-10">
         {/* Logo & Header */}

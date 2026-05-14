@@ -8,6 +8,7 @@ import {
   LogOut,
   User as UserIcon,
   ChevronDown,
+  SquareArrowOutUpRight,
 } from "lucide-react";
 import AdminSidebar from "@/components/AdminSidebar";
 import Link from "next/link";
@@ -45,7 +46,7 @@ export default function AdminLayoutClient({
       >
         {/* Top Header */}
         <header className="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-4 sm:px-10 sticky top-0 z-20 w-full">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Hamburger Toggle */}
             <button
               onClick={() => {
@@ -61,6 +62,13 @@ export default function AdminLayoutClient({
             >
               <Menu size={24} />
             </button>
+            <a
+              href="/"
+              className="flex items-center gap-2 px-3 py-2 text-xs font-bold font-mono bg-green-800 text-green-200 hover:text-green-50 hover:bg-green-700 w-full transition-colors cursor-pointer"
+            >
+              View Website
+              <SquareArrowOutUpRight size={16} />
+            </a>
           </div>
 
           <div className="flex items-center gap-3 sm:gap-6 relative">

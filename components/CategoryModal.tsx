@@ -164,7 +164,7 @@ export default function CategoryModal({
             </div>
 
             <Link href="/contact">
-              <button className="rounded-full bg-[#122e1e] border border-[#b5e941] px-10 py-5 text-sm font-black uppercase tracking-widest text-[#b5e941] shadow-2xl transition-all hover:scale-105 active:scale-95">
+              <button className="rounded-full bg-[#122e1e] border border-[#b5e941] px-8 py-3.5 md:px-10 md:py-5 text-[13px] font-mono md:font-montserrat font-black uppercase tracking-widest text-[#b5e941] shadow-2xl transition-all hover:scale-105 active:scale-95">
                 Contact Us
               </button>
             </Link>

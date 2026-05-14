@@ -10,6 +10,7 @@ import { routing } from "@/i18n/routing";
 import { getSettings } from "@/app/actions/settings";
 import { SettingsProvider } from "@/components/providers/SettingsProvider";
 import { GoogleAnalytics, FacebookPixel } from "@/components/analytics/Analytics";
+import AuthProvider from "@/components/providers/AuthProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -90,10 +91,12 @@ export default async function RootLayout({
         <FacebookPixel pixelId={settings?.seo?.facebookPixelId} />
         <NextIntlClientProvider messages={messages} locale={locale}>
           <SettingsProvider settings={settings}>
-            <ToastProvider>
-              <ToasterWrapper />
-              {children}
-            </ToastProvider>
+            <AuthProvider>
+              <ToastProvider>
+                <ToasterWrapper />
+                {children}
+              </ToastProvider>
+            </AuthProvider>
           </SettingsProvider>
         </NextIntlClientProvider>
       </body>

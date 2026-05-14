@@ -1,11 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight, Globe } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronRight,
+  Globe,
+  LayoutDashboard,
+  LogOut,
+  User,
+  Settings,
+  ChevronDown,
+} from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useSettings } from "@/components/providers/SettingsProvider";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
@@ -13,10 +24,13 @@ export default function Navbar() {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
   const settings = useSettings();
+  const { data: session, status } = useSession();
+  const isLoggedIn = status === "authenticated";
 
   const categories = [
     { name: t("home"), href: "/" },
@@ -34,6 +48,7 @@ export default function Navbar() {
     { name: t("about"), href: "/about" },
     { name: t("faqs"), href: "/faqs" },
     { name: t("legalPolicies"), href: "/legals" },
+    { name: t("contact"), href: "/contact" },
   ];
 
   const toggleLanguage = () => {
@@ -181,7 +196,7 @@ export default function Navbar() {
               ))} */}
             </div>
 
-            <div className="hidden md:flex items-center gap-5">
+            <div className="hidden md:flex items-center gap-4">
               {/* Language Switcher */}
               <div className="relative group">
                 <button
@@ -214,6 +229,86 @@ export default function Navbar() {
                   {t("contactUs")}
                 </button>
               </Link>
+
+              {isLoggedIn ? (
+                <div className="relative">
+                  <button
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="flex items-center gap-2 group p-0.5 rounded-full hover:bg-gray-50/10 transition-all active:scale-95"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white font-black text-sm shadow-xl ring-2 ring-white/10 group-hover:ring-secondary/40 transition-all uppercase">
+                      {session?.user?.name
+                        ? session.user.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                            .slice(0, 2)
+                        : "A"}
+                    </div>
+                  </button>
+
+                  {isUserMenuOpen && (
+                    <>
+                      <div
+                        className="fixed inset-0 z-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      />
+                      <div className="absolute right-0 mt-2 w-60 bg-white rounded-md shadow-2xl border border-gray-100 py-2 z-110 animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
+                        <div className="px-5 py-2 border-b border-gray-100 mb-2">
+                          <p className="text-sm font-black text-primary truncate -mb-1">
+                            {session?.user?.name}
+                          </p>
+                          <span className="text-[10px] font-mono font-medium text-gray-500 lowercase tracking-widest truncate">
+                            {session?.user?.email}
+                          </span>
+                        </div>
+
+                        <Link
+                          href="/admin/profile"
+                          onClick={() => setIsUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-5 py-3 text-[13px] font-bold cursor-pointer font-mono text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                        >
+                          <User size={18} className="text-gray-400" />
+                          Profile Settings
+                        </Link>
+
+                        <Link
+                          href="/admin/dashboard"
+                          onClick={() => setIsUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-5 py-3 text-[13px] font-bold cursor-pointer font-mono text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                        >
+                          <LayoutDashboard
+                            size={18}
+                            className="text-gray-400"
+                          />
+                          Admin Dashboard
+                        </Link>
+
+                        <div className="h-px bg-gray-100 my-1" />
+
+                        <button
+                          onClick={() => {
+                            setIsUserMenuOpen(false);
+                            signOut();
+                          }}
+                          className="flex items-center gap-3 px-5 py-3 text-[13px] font-bold font-mono text-red-500 hover:bg-red-50 w-full transition-colors cursor-pointer text-left"
+                        >
+                          <LogOut size={18} />
+                          Sign Out
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className={`text-[13px] font-bold relative tracking-tight text-white/85 hover:text-white hover:border-b-2 cursor-pointer! 
+                    ${scrolled && "text-gray-700!"} ${!isHome && "text-gray-500!"}`}
+                >
+                  Login
+                </Link>
+              )}
             </div>
 
             {/* Mobile Actions: Language + Menu */}
@@ -335,16 +430,50 @@ export default function Navbar() {
             <button
               onClick={toggleLanguage}
               title={locale === "en" ? "Change to German" : "Change to English"}
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl border border-border/50 text-sm font-bold text-primary transition-all hover:bg-primary/5 active:scale-95"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-border/50 text-sm font-mono text-primary transition-all hover:bg-primary/5 active:scale-95"
             >
               <Globe size={18} />
               {locale === "en" ? "Switch to German" : "Auf Englisch umstellen"}
             </button>
-            <Link href="/contact" className="w-full">
-              <button className="w-full rounded-xl bg-primary py-4 text-base font-bold text-white shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all active:scale-[0.98]">
-                {t("contactUs")}
-              </button>
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                href="/admin/dashboard"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full"
+              >
+                <button className="w-full flex items-center justify-between gap-3 px-6 py-4 rounded-xl bg-[#001226] text-white shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all active:scale-[0.98]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white font-black text-xs uppercase border-2 border-white/10">
+                      {session?.user?.name
+                        ? session.user.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                            .slice(0, 2)
+                        : "A"}
+                    </div>
+                    <div className="text-left flex flex-col">
+                      <span className="text-[10px] font-medium font-mono text-white/50 leading-none mb-1">
+                        Admin Area
+                      </span>
+                      <span className="text-sm font-semibold font-mono">
+                        My Dashboard
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full"
+              >
+                <button className="w-full rounded-xl bg-primary py-3 text-sm font-mono text-white shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all active:scale-[0.98]">
+                  {t("login")}
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
