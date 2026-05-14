@@ -108,7 +108,7 @@ export default function LoginClient({ locale }: { locale: string }) {
           </button>
         </form>
 
-        <div className="pt-8 border-t border-gray-50 text-center">
+        {/* <div className="pt-8 border-t border-gray-50 text-center">
           <p className="text-sm text-gray-400">
             Don&apos;t have an account?{" "}
             <Link
@@ -118,7 +118,7 @@ export default function LoginClient({ locale }: { locale: string }) {
               Register
             </Link>
           </p>
-        </div>
+        </div> */}
       </div>
 
       <p className="mt-8 text-[11px] font-bold text-gray-300 uppercase tracking-widest">
