@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, Globe } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { useSettings } from "@/components/providers/SettingsProvider";
+import Image from "next/image";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
@@ -14,6 +16,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const settings = useSettings();
 
   const categories = [
     { name: t("home"), href: "/" },
@@ -126,16 +129,35 @@ export default function Navbar() {
           <div className="text-center">
             <Link
               href="/"
-              className={`text-2xl md:text-3xl font-extrabold tracking-tighter font-serif transition-colors ${
-                scrolled || !isHome ? "text-primary" : "text-white"
-              }`}
+              className={`flex items-center justify-center transition-all duration-500`}
             >
-              <span translate="no">Zufriedene Verkäufe</span>
+              {settings.logo && settings.showLogo ? (
+                <div
+                  className={`relative ${scrolled ? "h-10 w-32" : "md:h-20 md:w-20 h-16 w-16"} transition-all duration-500`}
+                >
+                  <Image
+                    src={settings.logo}
+                    alt={settings.siteName}
+                    fill
+                    className={`object-contain transition-all duration-500 ${!scrolled && isHome ? "" : ""}`}
+                    priority
+                  />
+                </div>
+              ) : (
+                <span
+                  className={`text-2xl md:text-3xl font-extrabold tracking-tighter font-serif transition-colors ${
+                    scrolled || !isHome ? "text-primary" : "text-white"
+                  }`}
+                  translate="no"
+                >
+                  {settings.siteName}
+                </span>
+              )}
             </Link>
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-8 lg:gap-10">
+          <div className="flex items-center gap-8 lg:gap-20">
             <div className="hidden lg:flex items-center gap-10">
               {/* {navLinks.map((link) => (
                 <Link
@@ -183,7 +205,7 @@ export default function Navbar() {
 
               <Link href="/contact">
                 <button
-                  className={`rounded-full px-8 py-3 text-sm font-bold shadow-xl transition-all active:scale-95 ${
+                  className={`rounded-full px-8 py-3 text-sm font-bold shadow-xl transition-all active:scale-95 cursor-pointer ${
                     scrolled || !isHome
                       ? "bg-primary text-white hover:opacity-90"
                       : "bg-white text-primary hover:bg-gray-100"

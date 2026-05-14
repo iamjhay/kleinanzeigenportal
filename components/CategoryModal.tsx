@@ -1,19 +1,43 @@
 "use client";
 
-import { X, Star } from "lucide-react";
+import {
+  X,
+  Star,
+  Smartphone,
+  Car,
+  Home as HomeIcon,
+  Shirt,
+  Sprout,
+  Briefcase,
+  PawPrint,
+  HelpCircle,
+  LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+
+const iconMap: Record<string, LucideIcon> = {
+  Smartphone,
+  Car,
+  Home: HomeIcon,
+  Shirt,
+  Sprout,
+  Briefcase,
+  PawPrint,
+  HelpCircle,
+};
 
 interface CategoryModalProps {
   isOpen: boolean;
   onClose: () => void;
   category: {
     name: string;
-    icon: React.ReactNode;
+    icon: any; // Allow string or ReactNode
     title: string;
     description: string;
-    backgroundImage: string;
+    image: string;
     tagline: string;
   } | null;
 }
@@ -67,7 +91,7 @@ export default function CategoryModal({
         {/* Background Image Container */}
         <div className="absolute inset-0 h-full w-full">
           <Image
-            src={category.backgroundImage}
+            src={category.image}
             alt={category.name}
             fill
             sizes="(max-width: 1200px) 100vw, 1152px"
@@ -84,14 +108,18 @@ export default function CategoryModal({
         <div className="absolute top-0 left-0 w-full p-6 py-8 lg:px-12 flex justify-between items-center z-10">
           <div className="flex items-center gap-4">
             <div className="flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#b5e941]/50 text-white shadow-2xl transition-transform duration-500 delay-300">
-              {category.icon}
+              {typeof category.icon === "string"
+                ? React.createElement(iconMap[category.icon] || HelpCircle, {
+                    size: 28,
+                  })
+                : category.icon}
             </div>
             <div className="flex flex-col">
               <span className="text-xs font-bold text-[#b5e941]">
                 {t("category")}
               </span>
               <span className="text-lg md:text-xl font-bold tracking-tight text-white font-montserrat">
-                {category.tagline}
+                {category.name}
               </span>
             </div>
           </div>
@@ -126,12 +154,20 @@ export default function CategoryModal({
               </div>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-[0.95] mb-2 md:mb-5 font-montserrat tracking-tighter">
-              {category.title}
-            </h2>
-            <p className="text-base md:text-lg text-white/70 max-w-2xl font-medium font-montserrat">
-              {category.description}
-            </p>
+            <div className="mb-8">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-[0.95] mb-2 md:mb-5 font-montserrat tracking-tighter">
+                {category.title}
+              </h2>
+              <p className="text-base md:text-lg text-white/70 max-w-2xl font-medium font-montserrat">
+                {category.description}
+              </p>
+            </div>
+
+            <Link href="/contact">
+              <button className="rounded-full bg-[#122e1e] border border-[#b5e941] px-10 py-5 text-sm font-black uppercase tracking-widest text-[#b5e941] shadow-2xl transition-all hover:scale-105 active:scale-95">
+                Contact Us
+              </button>
+            </Link>
 
             {/* <div className="flex flex-wrap items-center gap-6">
               <button className="group relative overflow-hidden rounded-full bg-white px-12 py-6 text-sm font-black uppercase tracking-widest text-black shadow-2xl transition-all hover:pr-14 active:scale-95">

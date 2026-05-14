@@ -17,16 +17,14 @@ import {
   Truck,
   PawPrint,
 } from "lucide-react";
-import CategoryModal from "@/components/CategoryModal";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import ExploreCategories from "@/components/marketing/ExploreCategories";
 
 export default function Home() {
   const t = useTranslations("Hero");
-  const tCat = useTranslations("Categories");
   const tHome = useTranslations("Home");
-  const [selectedCategory, setSelectedCategory] = useState<any>(null);
 
   // Simple helper to prevent the brand name from being translated
   const protectBrand = (text: string) => {
@@ -46,79 +44,8 @@ export default function Home() {
     );
   };
 
-  const categories = [
-    {
-      name: tCat("electronics.name"),
-      icon: <Smartphone size={24} />,
-      color: "bg-[#eafdc5]",
-      tagline: tCat("electronics.tagline"),
-      title: tCat("electronics.title"),
-      description: tCat("electronics.description"),
-      backgroundImage: "/assets/electronics-bg.png",
-    },
-    {
-      name: tCat("vehicles.name"),
-      icon: <Car size={24} />,
-      color: "bg-[#e9eff0]",
-      tagline: tCat("vehicles.tagline"),
-      title: tCat("vehicles.title"),
-      description: tCat("vehicles.description"),
-      backgroundImage: "/assets/vehicles-bg.png",
-    },
-    {
-      name: tCat("realEstate.name"),
-      icon: <HomeIcon size={24} />,
-      color: "bg-[#f0f9d9]",
-      tagline: tCat("realEstate.tagline"),
-      title: tCat("realEstate.title"),
-      description: tCat("realEstate.description"),
-      backgroundImage: "/assets/realestate-bg.png",
-    },
-    {
-      name: tCat("fashion.name"),
-      icon: <Shirt size={24} />,
-      color: "bg-[#dad9f9]",
-      tagline: tCat("fashion.tagline"),
-      title: tCat("fashion.title"),
-      description: tCat("fashion.description"),
-      backgroundImage: "/assets/fashion-bg.png",
-    },
-    {
-      name: tCat("homeGarden.name"),
-      icon: <Sprout size={24} />,
-      color: "bg-[#e9eff0]",
-      tagline: tCat("homeGarden.tagline"),
-      title: tCat("homeGarden.title"),
-      description: tCat("homeGarden.description"),
-      backgroundImage: "/assets/homegarden-bg.png",
-    },
-    {
-      name: tCat("jobs.name"),
-      icon: <Briefcase size={24} />,
-      color: "bg-[#f0f9d9]",
-      tagline: tCat("jobs.tagline"),
-      title: tCat("jobs.title"),
-      description: tCat("jobs.description"),
-      backgroundImage: "/assets/img-2.png",
-    },
-    {
-      name: tCat("animals.name"),
-      icon: <PawPrint size={24} />,
-      color: "bg-[#eafdc5]",
-      tagline: tCat("animals.tagline"),
-      title: tCat("animals.title"),
-      description: tCat("animals.description"),
-      backgroundImage: "/assets/prod-5.png",
-    },
-  ];
-
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <CategoryModal
-        isOpen={!!selectedCategory}
-        onClose={() => setSelectedCategory(null)}
-        category={selectedCategory}
-      />
       <main className="flex-1">
         {/* Full-Screen Hero Section - Matching User Requested Layout */}
         <section className="relative sm:h-[95vh] w-full overflow-hidden">
@@ -212,47 +139,7 @@ export default function Home() {
         </section>
 
         {/* Categories Section */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12 py-14 sm:py-16">
-          <div className="mb-12 flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-black tracking-tight text-primary font-montserrat uppercase">
-                {tCat("title")}
-              </h2>
-              <p className="mt-1 text-sm text-muted font-medium">
-                {tCat("subtitle")}
-              </p>
-            </div>
-            <Link
-              href="#"
-              className="group hidden md:flex items-center gap-1 text-sm font-semibold text-secondary hover:underline transition-all"
-            >
-              View All
-              <ChevronRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 lg:grid-cols-7">
-            {categories.map((cat, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedCategory(cat)}
-                className={`group cursor-pointer rounded-lg p-4 md:p-6 flex flex-col h-[120px] md:h-[160px] transition-all duration-500 hover:scale-[0.95] hover:shadow-xs ${cat.color} hover:ring-1 hover:border border-[#b5e941] ring-offset-2 hover:ring-secondary`}
-              >
-                <div className="flex-1">
-                  <h3 className="font-bold text-[#1d4b00] text-sm sm:text-[15px] leading-tight font-montserrat tracking-tight mb-1">
-                    {cat.name}
-                  </h3>
-                </div>
-
-                <div className="my-4 border-t border-dashed border-[#1d4b00]/10 w-full" />
-
-                <div className="flex justify-start text-[#1d4b00] opacity-80 group-hover:opacity-100 transition-all group-hover:scale-110">
-                  {cat.icon}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ExploreCategories />
 
         {/* About Us Section - Dark Green Asymmetric Layout */}
         <section className="bg-gray-100 py-24 lg:py-32 overflow-hidden">
